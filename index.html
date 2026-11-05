@@ -317,6 +317,26 @@ body.gold .cur-ring:not(.label){border-color:rgba(11,26,30,.55)}
 .tour figure:hover img{border-color:var(--gold);transform:translateY(-4px)}
 .tour figcaption{color:var(--muted);font-size:11px}
 
+
+/* about */
+.about{padding-block:120px 20px}
+.about-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:70px;align-items:center}
+.stack{position:relative;display:block;width:min(100%,380px);aspect-ratio:3/4;margin:0 auto;padding:0;border:0;background:none;cursor:pointer;font:inherit;color:inherit;-webkit-tap-highlight-color:transparent}
+.stack .ph{position:absolute;inset:0;display:block;padding:10px 10px 38px;background:#F4EFE4;border-radius:6px;box-shadow:0 30px 60px -20px rgba(0,0,0,.7);
+  transform:translate(calc(var(--o)*22px),calc(var(--o)*10px)) rotate(calc(var(--o)*5deg - 3deg)) scale(calc(1 - var(--o)*.04));z-index:calc(10 - var(--o));
+  transition:transform .7s cubic-bezier(.2,.8,.2,1),filter .5s;filter:brightness(calc(1 - var(--o)*.14))}
+.stack .ph img{display:block;width:100%;height:100%;object-fit:cover;border-radius:2px}
+.stack:hover .ph[style*="--o:0"]{transform:translate(0,-8px) rotate(-1deg)}
+.stack-hint{position:absolute;left:0;right:0;bottom:-34px;text-align:center;color:var(--dim);font-size:11px}
+.about-copy h2{margin:0 0 22px;font-family:var(--f-display);font-weight:700;font-size:clamp(36px,5vw,72px);line-height:1;letter-spacing:-.04em;text-wrap:balance}
+.about-copy p{margin:0 0 28px;color:var(--muted);font-size:19px;max-width:30em}
+.offclock{display:flex;flex-direction:column;gap:12px}
+.offclock .mono{color:var(--gold);font-size:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{border:1px solid var(--line);background:var(--ink-2);border-radius:999px;padding:8px 14px;font-size:14px;color:var(--fg);transition:border-color .3s,color .3s}
+.chips span:hover{border-color:var(--gold);color:var(--gold)}
+@media (max-width:860px){.about-grid{grid-template-columns:minmax(0,1fr);gap:64px}.stack{width:min(78%,320px)}}
+
 /* real screenshots */
 .media.shot .media-in{padding:4%}
 .media.shot img{display:block;max-width:100%;max-height:100%;width:auto;height:auto}
@@ -529,6 +549,27 @@ img{max-width:100%}
   <!-- BAND: scroll-driven type -->
   <div class="band" aria-hidden="true"><div class="band-row" id="band-a"></div><div class="band-row alt" id="band-b"></div></div>
 
+  <!-- ABOUT -->
+  <section class="sec about" id="about" aria-label="About me">
+    <div class="wrap about-grid">
+      <button class="stack" id="stack" type="button" data-cursor="Shuffle" aria-label="Photos of Ronak. Click to shuffle.">
+        <span class="ph" style="--o:0"><img src="assets/about-1.webp" width="600" height="800" alt="Ronak Singh in a suit and glasses" loading="lazy"></span>
+        <span class="ph" style="--o:1"><img src="assets/about-2.webp" width="600" height="800" alt="Ronak wrapped in a shawl, looking out at a fort at sunrise" loading="lazy"></span>
+        <span class="ph" style="--o:2"><img src="assets/about-3.webp" width="600" height="800" alt="Ronak on a hilltop above a city under a blue sky" loading="lazy"></span>
+        <span class="mono stack-hint">Click to shuffle</span>
+      </button>
+      <div class="about-copy">
+        <span class="mono kicker">About me</span>
+        <h2 data-split>A bit about the <em class="s">human.</em></h2>
+        <p data-fade>I'm a final-year engineer from Delhi who ended up in product because I like the place where technology, stories and people meet. I'd rather understand why someone struggles than add one more feature.</p>
+        <div class="offclock" data-fade>
+          <span class="mono">Off the clock</span>
+          <div class="chips"><span>Cinephile</span><span>Literature Head</span><span>400+ LeetCode</span><span>Always up for a good story</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PATH -->
   <section class="sec" id="path">
     <div class="wrap">
@@ -671,6 +712,14 @@ img{max-width:100%}
     var el = document.getElementById('clock'); if (!el) return;
     function tick() { try { el.textContent = new Date().toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: true }) + ' IST'; } catch (e) {} }
     tick(); setInterval(tick, 20000);
+  })();
+
+  /* ---------- about: click to shuffle the photo stack ---------- */
+  (function () {
+    var st = document.getElementById('stack'); if (!st) return;
+    var ph = Array.prototype.slice.call(st.querySelectorAll('.ph')), order = ph.map(function (_, i) { return i; });
+    function paint() { order.forEach(function (idx, pos) { ph[idx].style.setProperty('--o', pos); }); }
+    st.addEventListener('click', function () { order.push(order.shift()); paint(); });
   })();
 
   /* ---------- nav background ---------- */

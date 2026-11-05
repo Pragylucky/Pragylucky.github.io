@@ -26,11 +26,6 @@ Product Management Intern at Paytm and final-year B.Tech Electrical Engineering 
 - Screenshots and the share image live in `assets/`
 - Respects `prefers-reduced-motion`
 
-## Run locally
-```sh
-python3 -m http.server 8000
-# open http://localhost:8000
-```
 
 ## Deploy
 Served by GitHub Pages from the `main` branch.

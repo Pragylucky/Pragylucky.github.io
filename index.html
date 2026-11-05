@@ -300,6 +300,23 @@ body.gold .cur-ring:not(.label){border-color:rgba(11,26,30,.55)}
 .shots img{transform-style:preserve-3d}
 .confetti{position:fixed;left:0;top:0;width:10px;height:10px;pointer-events:none;z-index:120}
 
+
+/* FinSight stats + tour */
+.fs-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--ink-2)}
+.fs-stats>div{padding:22px 20px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.fs-stats>div:last-child{border-right:0}
+.fs-stats b{font-family:var(--f-display);font-weight:700;font-size:clamp(28px,3vw,42px);letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums}
+.fs-stats b sup{font-size:.5em;color:var(--gold);margin-left:2px;vertical-align:top}
+.fs-stats span:not([data-count]){color:var(--muted);font-size:13px;line-height:1.35}
+@media (max-width:700px){.fs-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.fs-stats>div:nth-child(2){border-right:0}.fs-stats>div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.case-side .note{color:var(--dim);font-size:11px;margin-top:-4px}
+.tour{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;scrollbar-width:thin;scrollbar-color:var(--line) transparent;-webkit-overflow-scrolling:touch}
+.tour figure{margin:0;flex:none;width:86%;scroll-snap-align:start;display:flex;flex-direction:column;gap:10px}
+.tour figure.phone{width:34%;min-width:200px}
+.tour img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--line);background:var(--ink-3);transition:border-color .3s,transform .5s cubic-bezier(.2,.8,.2,1)}
+.tour figure:hover img{border-color:var(--gold);transform:translateY(-4px)}
+.tour figcaption{color:var(--muted);font-size:11px}
+
 /* real screenshots */
 .media.shot .media-in{padding:4%}
 .media.shot img{display:block;max-width:100%;max-height:100%;width:auto;height:auto}
@@ -397,14 +414,14 @@ img{max-width:100%}
         <div class="step-icon"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></div>
         <h3>Decide what <em class="s">not</em> to build.</h3>
         <p>Saying no is a product decision. Trust is a feature.</p>
-        <div class="ex"><span class="mono">Pupmeow</span><span>No animal sales, ever: priced listings are removed, phone numbers stay hidden from strangers, and health records are private by default.</span></div>
+        <div class="ex"><span class="mono">Pupmeow · FinSight</span><span>Pupmeow: no animal sales, phone numbers hidden from strangers. FinSight: no buy or sell calls, no price targets, risky phrasing flagged.</span></div>
       </article>
       <article class="step">
         <span class="no" aria-hidden="true">04</span>
         <div class="step-icon"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"></path><path d="M14 7h7v7"></path></svg></div>
         <h3>Prove it before people depend on it.</h3>
         <p>I would rather find the weak spot in a test than in a user's bad day.</p>
-        <div class="ex"><span class="mono">Pupmeow</span><span>33 unit tests and load tests up to 1,000 concurrent requests found the scaling bottleneck before launch.</span></div>
+        <div class="ex"><span class="mono">Pupmeow · FinSight</span><span>Pupmeow: load tests up to 1,000 concurrent requests. FinSight: a live AI eval and 93% stock-detection precision and recall.</span></div>
       </article>
     </div>
   </section>
@@ -451,27 +468,45 @@ img{max-width:100%}
         </div>
       </article>
 
-      <article class="case">
+      <article class="case" id="finsight">
         <div class="case-side">
           <span class="mono idx">Case study · AI product</span>
           <h3>FinSight</h3>
-          <p class="one">An AI financial intelligence platform for everyday investors.</p>
-          <div class="tags"><span>Product</span><span>AI</span><span>Finance</span><span>Gemini</span></div>
+          <p class="one">Indian stock research with AI that shows its work, and refuses to give advice.</p>
+          <div class="tags"><span>Product</span><span>AI</span><span>Finance</span><span>Gemini</span><span>React</span><span>Node</span></div>
           <div class="btns">
-            <a class="btn solid magnetic" target="_blank" rel="noopener" href="https://fin-sight-ai-six-kappa.vercel.app">Open FinSight <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg></a>
+            <a class="btn solid magnetic" target="_blank" rel="noopener" href="https://fin-sight-ai-six-kappa.vercel.app">Try it as a guest <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg></a>
             <a class="btn ghost magnetic" target="_blank" rel="noopener" href="https://github.com/Pragylucky/FinSightAi">GitHub</a>
           </div>
+          <span class="mono note">Free-tier API: first load can take ~30s</span>
         </div>
         <div class="case-main">
           <div class="media shot framed" data-media data-cursor="Explore">
-            <div class="media-in" data-media-in><img class="tilt" src="assets/finsight-dashboard.webp" width="1600" height="800" alt="FinSight dashboard with portfolio performance, sector allocation and watchlist"></div>
+            <div class="media-in" data-media-in><img class="tilt" src="assets/fs-dashboard.webp" width="1400" height="875" alt="FinSight dashboard with live Nifty chart, portfolio allocation, top movers and news"></div>
+          </div>
+          <div class="fs-stats">
+            <div data-fade><b><span data-count="265">265</span></b><span>NSE stocks, live</span></div>
+            <div data-fade><b><span data-count="10">10</span></b><span>pages in a floating dock</span></div>
+            <div data-fade><b><span data-count="93">93</span><sup>%</sup></b><span>stock-detection precision &amp; recall</span></div>
+            <div data-fade><b><span data-count="23">23</span></b><span>automated tests + a live AI eval</span></div>
           </div>
           <div class="blocks">
-            <div class="block" data-fade><span class="mono">The problem</span><p>Researching a company, tracking a portfolio and reading the news meant jumping between different tools.</p></div>
-            <div class="block" data-fade><span class="mono">What I shipped</span><p>One place for company research, portfolio analytics, stock screening, watchlists and news dashboards.</p></div>
-            <div class="block wide" data-fade><span class="mono">The AI layer</span><p>Live market-data APIs feed Google Gemini, which turns raw numbers into plain-language, contextual insight, so the user understands the "why" and not just the chart.</p></div>
+            <div class="block" data-fade><span class="mono">The problem</span><p>Researching an Indian stock meant a quote site, a screener, a news feed and a chatbot that makes things up, each in a different tab.</p></div>
+            <div class="block" data-fade><span class="mono">The bet</span><p>One workspace where live data feeds the AI, so the analysis is grounded in numbers you can see, not vibes.</p></div>
+            <div class="block wide" data-fade><span class="mono">What I shipped</span>
+              <ul>
+                <li>Company pages with live quote, metrics, quarterly results and an AI read with strengths, risks, outlook and a risk score</li>
+                <li>Compare up to four companies on a rebased chart, and a screener across sector, market cap, PE and ROE</li>
+                <li>AI chat that receives live quotes and ratios for any stock you mention</li>
+                <li>Portfolio and watchlist with P&amp;L, sector allocation and NSE plus US holdings in rupees</li>
+                <li>News with sentiment, mutual funds, a SIP calculator, a ⌘K command palette and a phone layout</li>
+              </ul>
+            </div>
+            <div class="block" data-fade><span class="mono">Decisions</span><p>No buy or sell calls, no price targets, no guaranteed-return language. Risky phrasing is flagged, and every answer carries a disclaimer.</p></div>
+            <div class="block" data-fade><span class="mono">Trust loop</span><p>Each analysis shows the figures it was based on. Thumbs up or down with reasons feed a quality dashboard, backed by a written AI eval.</p></div>
+            <div class="block wide" data-fade><span class="mono">Under the hood</span><p>A market-data layer with fallback endpoints and a 24-hour stale cache, so it degrades gracefully and never invents numbers. JWT auth with guest accounts, rate limiting, route-level code splitting, and CI on every push.</p></div>
           </div>
-          <div class="shots"><img src="assets/finsight-chat.webp" width="1000" height="538" alt="FinSight AI chat assistant" loading="lazy" data-fade><img src="assets/finsight-analysis.webp" width="1000" height="538" alt="FinSight company analysis with price chart" loading="lazy" data-fade></div>
+          <div class="tour" data-tour data-cursor="Drag" aria-label="FinSight screens, scroll sideways"><figure><img src="assets/fs-dashboard.webp" width="1400" height="875" alt="FinSight dashboard screen" loading="lazy"><figcaption class="mono">Dashboard · live indices, portfolio, top movers</figcaption></figure><figure><img src="assets/fs-company.webp" width="1400" height="875" alt="FinSight company page screen" loading="lazy"><figcaption class="mono">Company page · quote, metrics, results</figcaption></figure><figure><img src="assets/fs-ai-analysis.webp" width="1400" height="875" alt="FinSight ai analysis screen" loading="lazy"><figcaption class="mono">AI analysis · strengths, risks, outlook</figcaption></figure><figure><img src="assets/fs-compare.webp" width="1400" height="875" alt="FinSight compare screen" loading="lazy"><figcaption class="mono">Compare · up to four companies</figcaption></figure><figure><img src="assets/fs-screener.webp" width="1400" height="875" alt="FinSight screener screen" loading="lazy"><figcaption class="mono">Screener · filter by sector, PE, ROE</figcaption></figure><figure><img src="assets/fs-chat.webp" width="1400" height="875" alt="FinSight ai chat screen" loading="lazy"><figcaption class="mono">AI chat · gets live quotes as context</figcaption></figure><figure><img src="assets/fs-news.webp" width="1400" height="875" alt="FinSight news screen" loading="lazy"><figcaption class="mono">News · sentiment per story</figcaption></figure><figure><img src="assets/fs-palette.webp" width="1400" height="875" alt="FinSight command palette screen" loading="lazy"><figcaption class="mono">Command palette · ⌘K</figcaption></figure><figure class="phone"><img src="assets/fs-mobile.webp" width="420" height="908" alt="FinSight dashboard on a phone" loading="lazy"><figcaption class="mono">On a phone · bottom tab bar</figcaption></figure></div>
         </div>
       </article>
 
@@ -556,7 +591,7 @@ img{max-width:100%}
   var hasGsap = !!(window.gsap && window.ScrollTrigger);
 
   /* ---------- marquee content ---------- */
-  var words = ['Product discovery', 'User flows', 'Requirements', 'Prioritization', 'Market research', 'SQL', 'Power BI', 'Figma', 'Jira', 'AI products'];
+  var words = ['Product discovery', 'User flows', 'Requirements', 'Prioritization', 'Market research', 'SQL', 'Power BI', 'Figma', 'Jira', 'AI products', 'AI evaluation', 'Guardrails'];
   var marq = document.getElementById('marq');
   marq.innerHTML = words.concat(words).map(function (w) { return '<span>' + w + '</span>'; }).join('');
 
@@ -906,6 +941,14 @@ img{max-width:100%}
   });
   /* contact: stats pop in with a stagger */
   gsap.from('.num', { y: 60, autoAlpha: 0, duration: 1, ease: 'power3.out', stagger: 0.12, scrollTrigger: { trigger: '.nums', start: 'top 85%' } });
+
+  /* ---------- FinSight tour: gentle nudge to show it scrolls ---------- */
+  document.querySelectorAll('[data-tour]').forEach(function (t) {
+    ScrollTrigger.create({ trigger: t, start: 'top 80%', once: true, onEnter: function () {
+      var o = { v: 0 };
+      gsap.to(o, { v: 120, duration: 0.9, ease: 'power2.out', yoyo: true, repeat: 1, delay: 0.6, onUpdate: function () { t.scrollLeft = o.v; } });
+    } });
+  });
 
   /* ---------- contact line fills with gold ---------- */
   gsap.to('#fill', { backgroundSize: '100% 100%', ease: 'none', scrollTrigger: { trigger: '#fill', start: 'top 85%', end: 'bottom 45%', scrub: true } });

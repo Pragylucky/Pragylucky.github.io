@@ -335,6 +335,13 @@ body.gold .cur-ring:not(.label){border-color:rgba(11,26,30,.55)}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips span{border:1px solid var(--line);background:var(--ink-2);border-radius:999px;padding:8px 14px;font-size:14px;color:var(--fg);transition:border-color .3s,color .3s}
 .chips span:hover{border-color:var(--gold);color:var(--gold)}
+.about-copy .offclock{margin-bottom:22px}
+.films{display:flex;flex-wrap:wrap;gap:8px}
+.films span{font-family:var(--f-serif);font-style:italic;font-size:20px;border-left:2px solid var(--gold);padding:2px 12px;color:var(--fg)}
+.about-copy .quote{font-family:var(--f-serif);font-style:italic;font-size:22px;color:var(--fg);margin:6px 0 20px;max-width:24em}
+.about-copy .quote .mono{font-family:var(--f-mono);font-style:normal;font-size:11px;color:var(--dim);display:block;margin-top:6px}
+.about-links{margin-top:0}
+@media (max-width:860px){.about-copy{padding-top:10px}}
 @media (max-width:860px){.about-grid{grid-template-columns:minmax(0,1fr);gap:64px}.stack{width:min(78%,320px)}}
 
 /* real screenshots */
@@ -566,6 +573,15 @@ img{max-width:100%}
           <span class="mono">Off the clock</span>
           <div class="chips"><span>Cinephile</span><span>Literature Head</span><span>400+ LeetCode</span><span>Always up for a good story</span></div>
         </div>
+        <div class="offclock" data-fade>
+          <span class="mono">My Letterboxd top four</span>
+          <div class="films"><span>Schindler's List</span><span>Singin' in the Rain</span><span>Manchester by the Sea</span><span>Sardar Udham</span></div>
+        </div>
+        <p class="quote" data-fade>&ldquo;Writing things my future self will cringe at.&rdquo; <span class="mono">my Substack bio</span></p>
+        <div class="btns about-links" data-fade>
+          <a class="btn ghost magnetic" target="_blank" rel="noopener" href="https://letterboxd.com/Goofy_rider/">Letterboxd <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg></a>
+          <a class="btn ghost magnetic" target="_blank" rel="noopener" href="https://substack.com/@pragylucky">Substack <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg></a>
+        </div>
       </div>
     </div>
   </section>
@@ -613,6 +629,8 @@ img{max-width:100%}
           <a class="btn ghost magnetic" target="_blank" rel="noopener" href="https://www.linkedin.com/in/ronak-singh-79234328a/">LinkedIn</a>
           <a class="btn ghost magnetic" target="_blank" rel="noopener" href="https://github.com/Pragylucky">GitHub</a>
           <a class="btn ghost magnetic" target="_blank" rel="noopener" href="https://leetcode.com/u/Pragy_lucky/">LeetCode</a>
+          <a class="btn ghost magnetic" target="_blank" rel="noopener" href="https://substack.com/@pragylucky">Substack</a>
+          <a class="btn ghost magnetic" target="_blank" rel="noopener" href="https://letterboxd.com/Goofy_rider/">Letterboxd</a>
           <a class="btn solid magnetic" target="_blank" rel="noopener" href="https://drive.google.com/file/d/1wkdNoErlxDIUSd_1oeJ8f48BSLD0YG2S/view?usp=sharing">Resume</a>
           <a class="btn ghost magnetic" href="mailto:ronaksingh18062005@gmail.com">Email me</a>
         </div>
